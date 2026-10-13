@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+/* Snow studio whites, the lens's amber → violet, black for the product void. */
+@theme {
+  --color-snow: #eef1f4;
+  --color-frost: #d9e0e7;
+  --color-ink: #0b0d10;
+  --color-amber: #ffb02e;
+  --color-violet: #7a3cff;
+
+  --font-sans: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  --ease-silk: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  background: var(--color-ink);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+::selection {
+  background: var(--color-violet);
+  color: #fff;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+/* The lens gradient, for the mark, rules and the CTA */
+.lens {
+  background: linear-gradient(100deg, #ffb02e, #ff5f6d 35%, #c13cff 70%, #7a3cff);
+}
+.lens-text {
+  background: linear-gradient(100deg, #ffb02e, #ff5f6d 35%, #c13cff 70%, #7a3cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Falling snow drawn in CSS over the hero */
+@keyframes fall {
+  from { transform: translate3d(0, -10vh, 0); }
+  to { transform: translate3d(var(--dx, 20px), 110vh, 0); }
+}
+
+/* Typed-in callouts: characters reveal left to right */
+.type-line {
+  clip-path: inset(0 calc(100% - var(--t, 0) * 100%) 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-snow] { display: none; }
+}
